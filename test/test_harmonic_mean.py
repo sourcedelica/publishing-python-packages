@@ -1,50 +1,25 @@
-import os
 import sys
 
+import pytest
 from termcolor import colored
 
-from imppkg.harmonic_mean import harmonic_mean
 from imppkg.harmony import main
 
 
-def test_harmony_happy_path(monkeypatch, capsys):
-    inputs = ["1", "4", "4"]
+@pytest.mark.parametrize(
+    ("inputs", "expected"), [
+        (["1", "4", "4"], 2.0),  # Happy path
+        (["a", "b"], 0.0),       # Bad input
+        ([], 0.0),               # No input
+    ]
+)
+def test_harmony_parameterized(monkeypatch, capsys, inputs, expected):
     monkeypatch.setattr(sys, "argv", ["harmony"] + inputs)
 
     main()
 
-    expected_value = 2.0
     assert capsys.readouterr().out.strip() == colored(
-        str(expected_value),
-        "red",
-        "on_cyan",
-        attrs=["bold"]
-    )
-
-
-def test_harmony_no_inputs(monkeypatch, capsys):
-    monkeypatch.setattr(sys, "argv", ["harmony"])
-
-    main()
-
-    expected_value = 0.0
-    assert capsys.readouterr().out.strip() == colored(
-        str(expected_value),
-        "red",
-        "on_cyan",
-        attrs=["bold"]
-    )
-
-
-def test_harmony_bad_inputs(monkeypatch, capsys):
-    inputs = ["a", "b"]
-    monkeypatch.setattr(sys, "argv", ["harmony"] + inputs)
-
-    main()
-
-    expected_value = 0.0
-    assert capsys.readouterr().out.strip() == colored(
-        str(expected_value),
+        str(expected),
         "red",
         "on_cyan",
         attrs=["bold"]
