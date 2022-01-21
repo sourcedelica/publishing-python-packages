@@ -10,5 +10,7 @@ namespace_packages = true
 
 [tool.black]
 line-length = 80
-target-version = ['py39', 'py310']
+target-version = ["py39", "py310"]
 skip-string-normalization = true
+
+# See setup.cfg for flake8
