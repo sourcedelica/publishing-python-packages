@@ -2,3 +2,12 @@
 requires = ["cython", "setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.mypy]
+python_version = 3.9
+show_error_context = true
+pretty = true
+namespace_packages = true
+
+[tool.black]
+line-length = 80
+target-version = ['py39', 'py310']

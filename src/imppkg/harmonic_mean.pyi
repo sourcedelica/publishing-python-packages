@@ -1,0 +1,3 @@
+from typing import Sequence, SupportsFloat
+
+def harmonic_mean(ms: Sequence[SupportsFloat]) -> float: ...

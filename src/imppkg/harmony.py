@@ -1,24 +1,33 @@
 import sys
+from typing import List
 
-from termcolor import cprint
+from termcolor import colored
 
 from imppkg.harmonic_mean import harmonic_mean
 
 
-def main():
-    result = 0.0
-
+def _parse_nums(inputs: List[str]) -> List[float]:
     try:
-        nums = [float(num) for num in sys.argv[1:]]
+        return [float(num) for num in inputs]
     except ValueError:
-        nums = []
+        return []
 
+
+def _calculate_results(nums: List[float]) -> float:
     try:
-        result = harmonic_mean(nums)
+        return harmonic_mean(nums)
     except ZeroDivisionError:
-        pass
+        return 0.0
 
-    cprint(str(result), 'red', 'on_cyan', attrs=['bold'])
+
+def _format_output(result: float) -> str:
+    return colored(str(result), 'red', 'on_cyan', attrs=['bold'])
+
+
+def main() -> None:
+    nums = _parse_nums(sys.argv[1:])
+    result = _calculate_results(nums)
+    print(_format_output(result))
 
 
 if __name__ == '__main__':
