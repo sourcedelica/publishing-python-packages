@@ -1,14 +1,19 @@
-name: My first workflow
+name: Packaging
 
 on:
   - push
 
 jobs:
-  say-hello:
-    name: Say Hello
+  setup-python:
+    name: Setup Python
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@2
+        with:
+          python-version: "3.10"
 
-      - name: Say Hello
-        run: echo "Hello"
+      - run: |
+          python -m pip install tox
+          tox -e format
+
