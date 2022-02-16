@@ -4,7 +4,7 @@ on:
   - push
 
 jobs:
-  check-format:
+  format:
     name: Run formatter
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +17,7 @@ jobs:
           python -m pip install tox
           tox -e format
 
-  check-lint:
+  lint:
     name: Run linter
     runs-on: ubuntu-latest
     steps:
@@ -30,7 +30,7 @@ jobs:
           python -m pip install tox
           tox -e lint
 
-  check-typing:
+  typecheck:
     name: Run typechecker
     runs-on: ubuntu-latest
     steps:
