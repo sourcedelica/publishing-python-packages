@@ -114,7 +114,7 @@ jobs:
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheels
         env:
-          - CIBW_BUILD: cp310-*_x86_64 cp310-win_amd64
+          CIBW_BUILD: cp310-*_x86_64 cp310-win_amd64
 
       - uses: actions/upload-artifact@v2
         with:
