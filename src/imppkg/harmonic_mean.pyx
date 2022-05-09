@@ -5,5 +5,6 @@ from typing import Sequence, SupportsFloat
 # But it passes mypy
 
 def harmonic_mean(ms: Sequence[SupportsFloat]) -> float:
+    """https://en.wikipedia.org/wiki/Harmonic_mean"""
     # noinspection PyTypeChecker
     return len(ms) / sum(1 / m for m in ms)
