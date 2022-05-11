@@ -84,7 +84,7 @@ jobs:
       - name: Run build
         run: python -m build --sdist
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           path: dist/*.tar.gz
 
@@ -116,7 +116,7 @@ jobs:
         env:
           CIBW_BUILD: cp310-*_x86_64 cp310-win_amd64
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           path: wheels/*.whl
 
