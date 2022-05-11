@@ -19,6 +19,4 @@ def test_harmony_parameterized(monkeypatch, capsys, inputs, expected):
 
     main()
 
-    assert capsys.readouterr().out.strip() == colored(
-        str(expected), 'red', 'on_cyan', attrs=['bold']
-    )
+    assert capsys.readouterr().out.strip() == colored(str(expected), 'red', 'on_cyan', attrs=['bold'])

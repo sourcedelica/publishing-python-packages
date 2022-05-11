@@ -3,21 +3,20 @@ A command-line interface for calculating the harmonic mean of user-provided numb
 """
 
 import sys
-from typing import List
 
 from termcolor import colored
 
 from imppkg.harmonic_mean import harmonic_mean
 
 
-def _parse_nums(inputs: List[str]) -> List[float]:
+def _parse_nums(inputs: list[str]) -> list[float]:
     try:
         return [float(num) for num in inputs]
     except ValueError:
         return []
 
 
-def _calculate_results(nums: List[float]) -> float:
+def _calculate_results(nums: list[float]) -> float:
     try:
         return harmonic_mean(nums)
     except ZeroDivisionError:
