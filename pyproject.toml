@@ -13,4 +13,4 @@ line-length = 120
 target-version = ["py39", "py310"]
 skip-string-normalization = true
 
-# See setup.cfg for flake8
+# See setup.cfg for coverage, flake8, pytest and tox
